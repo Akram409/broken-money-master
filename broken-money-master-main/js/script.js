@@ -1,9 +1,11 @@
+const print = async (val) => {
+  console.log(val)
+}
 const calculateExpense = () => {
-  const income = document.querySelector("income").value;
-  const food = document.querySelector("food").value;
-  const rent = document.querySelector("rent").value;
-  const clothes = document.querySelectorAll("clothes").value;
-
+  const income = document.querySelector("#income").value;
+  const food = document.querySelector("#food").value;
+  const rent = document.querySelector("#rent").value;
+  const clothes = document.querySelector("#clothes").value;
   if (
     income < 0 ||
     income == "" ||
@@ -22,9 +24,10 @@ const calculateExpense = () => {
     parseInt(food) + parseInt(rent) + parseInt(clothes);
 
   // calculate balance
-  const balance = parseInt(income.value) - expense;
+  const balance = parseInt(income) - expense;
+
   //   validate income
-  if (expense > income.value) {
+  if (expense > parseInt(income)) {
     alert("Expenses cannot be more than income");
   } else {
     // view total expense and balance
@@ -36,11 +39,14 @@ const calculateExpense = () => {
 const calculateSavings = () => {
   // calculate saving amount
   const savePercentage = document.getElementById("save").value;
-//   Validate saving percentage value
+  const IncomeVal = document.getElementById('income')
+  // const IncomeVal = document.getElementById('income')
+  // print(IncomeVal.value)
+  //   Validate saving percentage value
   if (savePercentage < 0) {
     alert("Provide positive saving value");
   }
-  const savingAmount = (savePercentage / 100) + income;
+  const savingAmount = (savePercentage / 100) + IncomeVal.value;
 
   // calculate remaining balance
   const balance = document.getElementById("balance").innerText;
@@ -52,6 +58,6 @@ const calculateSavings = () => {
   } else {
     // view saving amount and remaining balance
     document.getElementById("saving-amount").innerText = savingAmount;
-    document.getElementById("remaining-balance").innerText = remainingBalance;
+    document.querySelector(".remaining-balance").innerText = remainingBalance;
   }
 };
