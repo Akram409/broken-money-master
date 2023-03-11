@@ -45,8 +45,9 @@ const calculateSavings = () => {
   //   Validate saving percentage value
   if (savePercentage < 0) {
     alert("Provide positive saving value");
+    return
   }
-  const savingAmount = (savePercentage / 100) + IncomeVal.value;
+  const savingAmount = (savePercentage / 100) * IncomeVal.value;
 
   // calculate remaining balance
   const balance = document.getElementById("balance").innerText;
